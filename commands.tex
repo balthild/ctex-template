@@ -1,0 +1,89 @@
+% Dashes
+\newcommand{\hdash}{\hspace{2pt}\rule[.62ex]{.5em}{.72pt}\hspace{2pt}}
+\newcommand{\dash}{\hspace{2pt}\rule[.62ex]{1em}{.72pt}\hspace{2pt}}
+\newcommand{\ddash}{\hspace{2pt}\rule[.62ex]{2em}{.72pt}\hspace{2pt}}
+
+% https://tex.stackexchange.com/questions/239120/insert-text-in-the-blank-page-after-part
+%\makeatletter
+%\def\@endpart{
+%  \vfil\newpage
+%  \if@twoside
+%    \if@openright
+%      \null
+%      \thispagestyle{empty}
+%      \partnotepage{\partnote}
+%      \newpage
+%    \fi
+%  \fi
+%  \if@tempswa
+%      \twocolumn
+%  \fi
+%}
+%\makeatother
+\makeatletter
+\def\ttl@page@ii#1#2#3#4#5#6#7{%
+  \ttl@assign\@tempskipa#3\relax\beforetitleunit
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \@ifundefined{ttl@ps@#6}%
+    {\thispagestyle{plain}}%
+    {\thispagestyle{\@nameuse{ttl@ps@#6}}}%
+  \if@twocolumn
+    \onecolumn
+    \@tempswatrue
+  \else
+    \@tempswafalse
+  \fi
+  \vspace*{\@tempskipa}%
+  \@afterindenttrue
+  \ifcase#5 \@afterindentfalse\fi
+  \ttl@assign\@tempskipb#4\relax\aftertitleunit
+  \ttl@select{#6}{#1}{#2}{#7}%
+  \ttl@finmarks
+  \@ifundefined{ttlp@#6}{}{\ttlp@write{#6}}%
+  \vspace{\@tempskipb}%
+  \newpage
+  \if@twoside
+    \if@openright
+      \null
+      \@ifundefined{ttl@ps@#6}%
+        {\thispagestyle{empty}}%
+        {\thispagestyle{\@nameuse{ttl@ps@#6}}}%
+      \partnotepage{\partnote}%
+      \newpage
+    \fi
+  \fi
+  \if@tempswa
+    \twocolumn
+  \fi
+  \ignorespaces%
+}
+\makeatother
+
+\newcommand\clearoddpage{
+  \ifodd\value{page}
+    \null\clearpage
+    \thispagestyle{empty}
+  \else
+    \null
+  \fi
+}
+
+\newcommand\partnote{}
+\newcommand\partnotepage[1]{%
+  \thispagestyle{empty}%
+  \vspace*{\fill}%
+  \noindent%
+  \makebox[\textwidth]{\Huge{\textit{#1}}}%
+  \vspace*{\fill}
+}
+
+\newcommand\currentchaptername{}
+\newcommand\newchapter[2]{
+  \chapter[#1]{#2}
+  \renewcommand{\currentchaptername}{#2}
+  \thispagestyle{empty}
+}

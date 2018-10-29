@@ -1,0 +1,11 @@
+\setCJKmainfont[BoldFont=NotoSansCJKsc-Medium, ItalicFont=FandolKai-Regular]{NotoSerifCJKsc-Regular}
+
+% 移动汉字字体基线
+\let\CJKsymbolOrig\CJKsymbol
+\let\CJKpunctsymbolOrig\CJKpunctsymbol
+\newcommand*\CJKmovesymbol[1]{\raise.07em\hbox{\CJKsymbolOrig{#1}}}
+\newcommand*\CJKmovepunctsymbol[1]{\raise.07em\hbox{\CJKpunctsymbolOrig{#1}}}
+\newcommand*\CJKmove[1]{\punctstyle{plain}\let\CJKsymbol\CJKmovesymbol\let\CJKpunctsymbol\CJKmovepunctsymbol#1}
+
+\let\textitOrig\textit
+\renewcommand*\textit[1]{{\textitOrig{\CJKmove{#1}}}}

@@ -1,0 +1,34 @@
+% main.tex
+\documentclass[a4paper,12pt,english]{article}
+\input{packages.tex}
+\input{commands.tex}
+\InputIfFileExists{font.tex}{}{}
+
+\begin{document}
+
+\title{测试标题}
+\author{测试作者}
+\maketitle
+
+%\renewcommand{\contentsname}{目录}
+%\tableofcontents
+
+\section{测试章节一}
+
+测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本.
+
+\subsection{测试小章节}
+
+测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. 测试段落文本. Testing text. Testing text. 测试段落文本.
+
+\section{Test Section 2}
+
+Testing math block. If a complex function $f(z)=f(x+iy)=u(x,y)+iv(x,y)$ satisfying the Cauchy -- Riemann equations
+\begin{align*}
+% We're using amsmath and physics packages here.
+\pdv{u}{x} - \pdv{v}{y} = 0 \\
+\pdv{v}{x} + \pdv{u}{y} = 0
+\end{align*}
+then the function is holomorphic.
+
+\end{document}

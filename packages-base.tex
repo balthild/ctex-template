@@ -1,0 +1,35 @@
+% Language and font encodings
+\usepackage[UTF8]{ctex}
+\usepackage[english]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage[LGR,T1]{fontenc}
+\newcommand{\textgreek}[1]{\begingroup\fontencoding{LGR}\selectfont#1\endgroup}
+
+% use black hyperref color
+%\usepackage[breaklinks=true,bookmarks=false,colorlinks,linkcolor=black]{hyperref}
+\usepackage{hyperref}
+
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=3.5cm}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand\headrule{\makebox[\textwidth]{\rule{\headwidth}{\headrulewidth}}\vskip-\headrulewidth}
+\fancyhead[LO,RE]{\currentchaptername}
+\fancyfoot[LO,RE]{\thepage}
+
+\usepackage{listings}
+\lstset{%
+  language=Matlab,%
+  frame=single,%
+  numbers=left,%
+  stringstyle=\ttfamily,%
+  keepspaces=true,%
+  tabsize=4,%
+  basicstyle=\ttfamily
+}
+
+% Set up paragraph
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
